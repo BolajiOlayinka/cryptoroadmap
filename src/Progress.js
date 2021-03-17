@@ -2,9 +2,8 @@ import styled from "styled-components";
 
 const Progress = styled.div`
   position: absolute;
-  //   left:685px;
   left: 50%;
-  top: 165px;
+  top: 180px;
   background: linear-gradient(
     to right,
     rgba(85, 205, 255, 1) ${(props) => props.scroll},
@@ -12,7 +11,7 @@ const Progress = styled.div`
   );
   width: 2px;
   height: 100%;
-  z-index: 1;
+  z-index: 2;
 `;
 
 export default Progress;
