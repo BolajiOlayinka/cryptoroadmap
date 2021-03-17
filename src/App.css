@@ -1,7 +1,9 @@
 :root{
 --mainAsh:#707785;
 }
-
+.app{
+  scroll-behavior: smooth;
+}
 h5{
   font-family: 'Rubik', sans-serif;
 }

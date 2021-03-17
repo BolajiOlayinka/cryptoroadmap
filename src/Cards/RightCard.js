@@ -14,7 +14,7 @@ export default function RightCard(props) {
             
             <StyledIcon style={{color:props.iconColor, backgroundColor:props.iconBackground}} 
            
-      icon={['fas', 'check-circle']}
+      icon={props.firstIcon}
       mask={['fas', 'circle']}
       transform="shrink-8"
     

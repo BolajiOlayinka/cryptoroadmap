@@ -1,11 +1,54 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import styled from 'styled-components';
 import Left from './Cards/LeftCard';
 import Right from './Cards/RightCard';
 import Progress from './Progress';
 
 export default function Roadmap(props) {
-const [coloredIcon, setColoredIcon] = useState('#eaeaea')
+const [coloredIcon, setColoredIcon] = useState('#eaeaea');
+const [colorone, setColorOne] = useState('#eaeaea');
+const [scrollPosition, setScrollPosition]=useState(0)
+
+const calculateScrollDistance = ()=>{
+    const scrollTop = window.pageYOffset;
+    console.log(scrollTop);
+    const offSetTop = 20;
+    const scrollPosition = Math.floor(scrollTop-offSetTop)
+    // setScrollPosition(scrollPosition);
+    if(scrollPosition>=3440){
+        setScrollPosition(3440)
+    }else{
+        setScrollPosition(scrollPosition)
+    }
+}
+
+const SetActiveIcons = ()=>{
+    if(scrollPosition===5){
+        setColorOne('black')
+    }
+}
+
+
+  const listenToScrollEvent = () => {
+    document.addEventListener("scroll", () => {
+      requestAnimationFrame(() => {
+        // Calculates the scroll distance
+        calculateScrollDistance();
+        SetActiveIcons()
+      });
+    });
+  };
+//   const checkProgressLength = ()=>{
+//       if(scrollPosition===3450){
+//           setScrollPosition(3450)
+//       }else{}
+//   }
+  useEffect(()=>{
+    listenToScrollEvent();
+  })
+  
+
+
 const content = {
     one:{
         heading:`Idea conceived`,
@@ -145,8 +188,8 @@ const content = {
 
     return (
         <React.Fragment>
-            <Progress scroll={100 + '%'}/>
-
+            <Progress lineColor={'#55cdff'} height={scrollPosition + 'px'}/>
+            {console.log(scrollPosition)}
             <Container>
             
                 <Wrapper>
@@ -154,7 +197,9 @@ const content = {
                 cardContent={content.one.body}
                 cardHeading={content.one.heading}
                 date={content.one.date}
-                iconColor="#fff" iconBackground={coloredIcon}/>
+                iconColor="#fff" iconBackground={colorone}
+                firstIcon={['fas','check-circle']}/>
+                
                 </Wrapper>
                 
                 
@@ -165,7 +210,8 @@ const content = {
                 cardContent={content.two.body}
                 cardHeading={content.two.heading}
                 date={content.two.date}
-                iconColor="#fff" iconBackground={coloredIcon}/>
+                iconColor="#fff" iconBackground={coloredIcon}
+                firstIcon={['fas','check-circle']}/>
                 </Wrapper>
                 
                 
@@ -178,7 +224,8 @@ const content = {
                 cardContent={content.three.body}
                 cardHeading={content.three.heading}
                 date={content.three.date}
-                iconColor="#fff" iconBackground={coloredIcon}/>
+                iconColor="#fff" iconBackground={coloredIcon}
+                firstIcon={['fas','check-circle']}/>
                 </Wrapper>
                 
                 
@@ -189,7 +236,9 @@ const content = {
                 cardContent={content.four.body}
                 cardHeading={content.four.heading}
                 date={content.four.date}
-                iconColor="#fff" iconBackground={coloredIcon}/>
+                iconColor="#fff" iconBackground={coloredIcon}
+                firstIcon={['fas','check-circle']}
+                />
                 </Wrapper>
                 
                 
@@ -202,7 +251,8 @@ const content = {
                 cardContent={content.five.body}
                 cardHeading={content.five.heading}
                 date={content.five.date}
-                iconColor="#fff" iconBackground={coloredIcon}/>
+                iconColor="#fff" iconBackground={coloredIcon}
+                firstIcon={['fas','check-circle']}/>
                 </Wrapper>
                 
                 
@@ -213,7 +263,8 @@ const content = {
                 cardContent={content.six.body}
                 cardHeading={content.six.heading}
                 date={content.six.date}
-                iconColor="#fff" iconBackground={coloredIcon}/>
+                iconColor="#fff" iconBackground={coloredIcon}
+                firstIcon={['fas','check-circle']}/>
                 </Wrapper>
                 
                 
@@ -226,7 +277,8 @@ const content = {
                 cardContent={content.seven.body}
                 cardHeading={content.seven.heading}
                 date={content.seven.date}
-                iconColor="#fff" iconBackground={coloredIcon}/>
+                iconColor="#fff" iconBackground={coloredIcon}
+                firstIcon={['fas','check-circle']}/>
                 </Wrapper>
                 
                 
@@ -237,7 +289,8 @@ const content = {
                 cardContent={content.eight.body}
                 cardHeading={content.eight.heading}
                 date={content.eight.date}
-                iconColor="#fff" iconBackground={coloredIcon}/>
+                iconColor="#fff" iconBackground={coloredIcon}
+                firstIcon={['fas','check-circle']}/>
                 </Wrapper>
                 
             </Container>
@@ -247,7 +300,9 @@ const content = {
                 cardContent={content.nine.body}
                 cardHeading={content.nine.heading}
                 date={content.nine.date}
-                iconColor="#fff" iconBackground={coloredIcon}/>
+                iconColor="#fff" iconBackground={coloredIcon}
+                firstIcon={['fas','sync-alt']}
+                />
                 </Wrapper>
                 
             </Container>
@@ -257,7 +312,8 @@ const content = {
                 cardContent={content.ten.body}
                 cardHeading={content.ten.heading}
                 date={content.ten.date}
-                iconColor="#fff" iconBackground={coloredIcon}/>
+                iconColor="#fff" iconBackground={coloredIcon}
+                firstIcon={['fas','calendar-check']}/>
                 </Wrapper>
                 
             </Container>
@@ -267,7 +323,8 @@ const content = {
                 cardContent={content.eleven.body}
                 cardHeading={content.eleven.heading}
                 date={content.eleven.date}
-                iconColor="#fff" iconBackground={coloredIcon}/>
+                iconColor="#fff" iconBackground={coloredIcon}
+                firstIcon={['fas','calendar']}/>
                 </Wrapper>
                 
             </Container>
@@ -277,7 +334,8 @@ const content = {
                 cardContent={content.twelve.body}
                 cardHeading={content.twelve.heading}
                 date={content.twelve.date}
-                iconColor="#fff" iconBackground={coloredIcon}/>
+                iconColor="#fff" iconBackground={coloredIcon}
+                firstIcon={['fas','calendar']}/>
                 </Wrapper>
                 
             </Container>
@@ -287,7 +345,8 @@ const content = {
                 cardContent={content.thirteen.body}
                 cardHeading={content.thirteen.heading}
                 date={content.thirteen.date}
-                iconColor="#fff" iconBackground={coloredIcon}/>
+                iconColor="#fff" iconBackground={coloredIcon}
+                firstIcon={['fas','calendar']}/>
                 </Wrapper>
                 
             </Container>
@@ -297,7 +356,8 @@ const content = {
                 cardContent={content.fourteen.body}
                 cardHeading={content.fourteen.heading}
                 date={content.fourteen.date}
-                iconColor="#fff" iconBackground={coloredIcon}/>
+                iconColor="#fff" iconBackground={coloredIcon}
+                firstIcon={['fas','calendar']}/>
                 </Wrapper>
                 
             </Container>
@@ -307,7 +367,8 @@ const content = {
                 cardContent={content.fifteen.body}
                 cardHeading={content.fifteen.heading}
                 date={content.fifteen.date}
-                iconColor="#fff" iconBackground={coloredIcon}/>
+                iconColor="#fff" iconBackground={coloredIcon}
+                firstIcon={['fas','calendar']}/>
                 </Wrapper>
                 
             </Container>
@@ -317,7 +378,8 @@ const content = {
                 cardContent={content.sixteen.body}
                 cardHeading={content.sixteen.heading}
                 date={content.sixteen.date}
-                iconColor="#fff" iconBackground={coloredIcon}/>
+                iconColor="#fff" iconBackground={coloredIcon}
+                firstIcon={['fas','calendar']}/>
                 </Wrapper>
                 
             </Container>
@@ -327,7 +389,8 @@ const content = {
                 cardContent={content.seventeen.body}
                 cardHeading={content.seventeen.heading}
                 date={content.seventeen.date}
-                iconColor="#fff" iconBackground={coloredIcon}/>
+                iconColor="#fff" iconBackground={coloredIcon}
+                firstIcon={['fas','calendar']}/>
                 </Wrapper>
                 
             </Container>
@@ -337,12 +400,35 @@ const content = {
                 cardContent={content.eighteen.body}
                 cardHeading={content.eighteen.heading}
                 date={content.eighteen.date}
-                iconColor="#fff" iconBackground={coloredIcon}/>
+                iconColor="#fff" iconBackground={coloredIcon}
+                firstIcon={['fas','calendar']}/>
                 </Wrapper>
                 
             </Container>
             
             <ProgressUnderlay/>
+            <TextSection>
+            <h1>Lorem Ipsum</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>...more paragraphs of text, enough so that the page gets a scrollbar</p>
+            </TextSection>
         </React.Fragment>
     )
 }
@@ -366,3 +452,7 @@ const ProgressUnderlay = styled.div`
   height: 3450px;
   z-index: 1;
 `;
+const TextSection = styled.div `
+position:relative;
+margin-top:70px;
+`

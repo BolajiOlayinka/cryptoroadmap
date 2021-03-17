@@ -5,12 +5,11 @@ const Progress = styled.div`
   left: 50%;
   top: 180px;
   background: linear-gradient(
-    to right,
-    rgba(85, 205, 255, 1) ${(props) => props.scroll},
-    transparent 0
+    ${(props) => props.lineColor} ${(props) => props.scroll},
+    ${(props) => props.lineColor}
   );
   width: 2px;
-  height: 100%;
+  height: ${(props) => props.height};
   z-index: 2;
 `;
 
