@@ -7,53 +7,65 @@ library.add(fas);
 export default function LeftCard(props) {
   return (
     <React.Fragment>
-        <Container>
-      <Wrapper>
+       
           <CardContainer>
-          <Card>The Centric concept was born out of frustration with the crypto industry and the layers of manipulation which has hindered growth and adoption of the industry.</Card>
+          <Card>
+              <h5>{props.cardHeading}</h5>
+              <p>{props.cardContent}</p></Card>
           </CardContainer>
         
         <Diamond></Diamond>
         <Icon>
-        <StyledIcon
-        
+            
+        <StyledIcon style={{color:props.iconColor, backgroundColor:props.iconBackground}} 
+       
   icon={['fas', 'check-circle']}
   mask={['fas', 'circle']}
   transform="shrink-8"
-  fixedWidth
+
 />
         </Icon>
-      </Wrapper>
-      </Container>
+        <Date>{props.date}</Date>
     </React.Fragment>
   );
 }
 
-const Container= styled.div `
-width:900px;
-margin:auto;
-padding-top:50px;
-`
 const StyledIcon = styled(FontAwesomeIcon) `
-color:#e8e8f6;
+border-radius:50%;
 font-size:40px;
 
+
 `
 
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
 const CardContainer = styled.div `
 box-shadow: 2px 2px 30px 0 rgb(156 156 192 / 26%);
+width:410px;
 `
 const Card = styled.div`
   background-color: white;
   border-radius: 6px;
  
-  padding: 40px;
-  width:410px;
+  padding: 20px 40px;
+  
   z-index:2;
+  h5{
+    font-family: "Rubik", Helvetica, Arial, sans-serif;
+    font-weight:500;
+    line-height:30px;
+    letter-spacing:-0.7px;
+    margin-bottom:2px;
+      padding-top:8px;
+      font-size:21px;
+      margin-top:0px;
+  }
+  p{
+    font-family: "Roboto" sans-serif,
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--mainAsh);
+    margin-top:0px;
+  }
 `;
 const Diamond = styled.div`
   width: 0;
@@ -76,5 +88,12 @@ const Diamond = styled.div`
   }
 `;
 const Icon = styled.div `
-
+z-index:3;
+margin-right:40px;
+`
+const Date = styled.div `
+color: #a0a0a2;
+width:410px;
+text-align:left;
+font-size:18px;
 `
