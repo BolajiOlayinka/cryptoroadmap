@@ -5,28 +5,70 @@ import Right from './Cards/RightCard';
 import Progress from './Progress';
 
 export default function Roadmap(props) {
-const [coloredIcon, setColoredIcon] = useState('#eaeaea');
+// const [coloredIcon, setColoredIcon] = useState('#eaeaea');
 const [colorone, setColorOne] = useState('#eaeaea');
+const [colortwo, setColorTwo] = useState('#eaeaea');
+const [colorthree, setColorThree] = useState('#eaeaea');
+const [colorfour, setColorFour] = useState('#eaeaea');
+const [colorfive, setColorFive] = useState('#eaeaea');
 const [scrollPosition, setScrollPosition]=useState(0)
 
 const calculateScrollDistance = ()=>{
     const scrollTop = window.pageYOffset;
-    console.log(scrollTop);
+    // console.log(scrollTop);
     const offSetTop = 20;
     const scrollPosition = Math.floor(scrollTop-offSetTop)
-    // setScrollPosition(scrollPosition);
+    setScrollPosition(scrollPosition);
     if(scrollPosition>=3440){
         setScrollPosition(3440)
     }else{
         setScrollPosition(scrollPosition)
     }
+    
 }
 
 const SetActiveIcons = ()=>{
-    if(scrollPosition===5){
-        setColorOne('black')
+  
+    if(scrollPosition>=20){
+        setColorOne('black');
+    }else{
+      setColorOne('#eaeaea');
     }
+    if(scrollPosition>=180){
+      setColorTwo('black');
+  }else{
+    setColorTwo('#eaeaea');
+  }
+  if(scrollPosition>=400){
+    setColorThree('black');
+}else{
+  setColorThree('#eaeaea');
 }
+if(scrollPosition>=600){
+  setColorFour('black');
+}else{
+setColorFour('#eaeaea');
+}
+  if(scrollPosition>=800){
+      setColorFive('black');
+  }else{
+    setColorFive('#eaeaea');
+  }
+//   const SetActiveIconSix = ()=>{
+// if(scrollPosition>=400){
+//   setColorSix('black');
+// }else{
+// setColorSix('#eaeaea');
+// }}
+//   const SetActiveIconSeven = ()=>{
+// if(scrollPosition>=580){
+//   setColorSeven('black');
+// }else{
+// setColorSeven('#eaeaea');
+// }
+// }
+  }
+
 
 
   const listenToScrollEvent = () => {
@@ -34,7 +76,7 @@ const SetActiveIcons = ()=>{
       requestAnimationFrame(() => {
         // Calculates the scroll distance
         calculateScrollDistance();
-        SetActiveIcons()
+        
       });
     });
   };
@@ -43,9 +85,22 @@ const SetActiveIcons = ()=>{
 //           setScrollPosition(3450)
 //       }else{}
 //   }
-  useEffect(()=>{
-    listenToScrollEvent();
+useEffect(()=>{
+  listenToScrollEvent();
+  
+})
+useEffect(()=>{
+  document.addEventListener("scroll", () => {
+  requestAnimationFrame(() => {
+    SetActiveIcons();
+    // SetActiveIconTwo();
+    // SetActiveIconThree();
+    // SetActiveIconFour();
   })
+}) 
+  })
+  
+  
   
 
 
@@ -197,7 +252,7 @@ const content = {
                 cardContent={content.one.body}
                 cardHeading={content.one.heading}
                 date={content.one.date}
-                iconColor="#fff" iconBackground={colorone}
+                iconColor="fff" iconBackground={colorone}
                 firstIcon={['fas','check-circle']}/>
                 
                 </Wrapper>
@@ -210,8 +265,10 @@ const content = {
                 cardContent={content.two.body}
                 cardHeading={content.two.heading}
                 date={content.two.date}
-                iconColor="#fff" iconBackground={coloredIcon}
+                iconColor="#fff" iconBackground={colortwo}
+               
                 firstIcon={['fas','check-circle']}/>
+                 {console.log(colortwo)}
                 </Wrapper>
                 
                 
@@ -224,7 +281,7 @@ const content = {
                 cardContent={content.three.body}
                 cardHeading={content.three.heading}
                 date={content.three.date}
-                iconColor="#fff" iconBackground={coloredIcon}
+                iconColor="#fff" iconBackground={colorthree}
                 firstIcon={['fas','check-circle']}/>
                 </Wrapper>
                 
@@ -236,7 +293,7 @@ const content = {
                 cardContent={content.four.body}
                 cardHeading={content.four.heading}
                 date={content.four.date}
-                iconColor="#fff" iconBackground={coloredIcon}
+                iconColor="#fff" iconBackground={colorfour}
                 firstIcon={['fas','check-circle']}
                 />
                 </Wrapper>
@@ -251,7 +308,7 @@ const content = {
                 cardContent={content.five.body}
                 cardHeading={content.five.heading}
                 date={content.five.date}
-                iconColor="#fff" iconBackground={coloredIcon}
+                iconColor="#fff" iconBackground={colorfive}
                 firstIcon={['fas','check-circle']}/>
                 </Wrapper>
                 
@@ -263,7 +320,7 @@ const content = {
                 cardContent={content.six.body}
                 cardHeading={content.six.heading}
                 date={content.six.date}
-                iconColor="#fff" iconBackground={coloredIcon}
+                iconColor="#fff" iconBackground={colorfour}
                 firstIcon={['fas','check-circle']}/>
                 </Wrapper>
                 
@@ -277,7 +334,7 @@ const content = {
                 cardContent={content.seven.body}
                 cardHeading={content.seven.heading}
                 date={content.seven.date}
-                iconColor="#fff" iconBackground={coloredIcon}
+                iconColor="#fff" iconBackground={colorfive}
                 firstIcon={['fas','check-circle']}/>
                 </Wrapper>
                 
@@ -289,7 +346,7 @@ const content = {
                 cardContent={content.eight.body}
                 cardHeading={content.eight.heading}
                 date={content.eight.date}
-                iconColor="#fff" iconBackground={coloredIcon}
+                iconColor="#fff" iconBackground={colorone}
                 firstIcon={['fas','check-circle']}/>
                 </Wrapper>
                 
@@ -300,7 +357,7 @@ const content = {
                 cardContent={content.nine.body}
                 cardHeading={content.nine.heading}
                 date={content.nine.date}
-                iconColor="#fff" iconBackground={coloredIcon}
+                iconColor="#fff" iconBackground={colortwo}
                 firstIcon={['fas','sync-alt']}
                 />
                 </Wrapper>
@@ -312,7 +369,7 @@ const content = {
                 cardContent={content.ten.body}
                 cardHeading={content.ten.heading}
                 date={content.ten.date}
-                iconColor="#fff" iconBackground={coloredIcon}
+                iconColor="#fff" iconBackground={colortwo}
                 firstIcon={['fas','calendar-check']}/>
                 </Wrapper>
                 
@@ -323,7 +380,7 @@ const content = {
                 cardContent={content.eleven.body}
                 cardHeading={content.eleven.heading}
                 date={content.eleven.date}
-                iconColor="#fff" iconBackground={coloredIcon}
+                iconColor="#fff" iconBackground={colortwo}
                 firstIcon={['fas','calendar']}/>
                 </Wrapper>
                 
@@ -334,7 +391,7 @@ const content = {
                 cardContent={content.twelve.body}
                 cardHeading={content.twelve.heading}
                 date={content.twelve.date}
-                iconColor="#fff" iconBackground={coloredIcon}
+                iconColor="#fff" iconBackground={colortwo}
                 firstIcon={['fas','calendar']}/>
                 </Wrapper>
                 
@@ -345,7 +402,7 @@ const content = {
                 cardContent={content.thirteen.body}
                 cardHeading={content.thirteen.heading}
                 date={content.thirteen.date}
-                iconColor="#fff" iconBackground={coloredIcon}
+                iconColor="#fff" iconBackground={colortwo}
                 firstIcon={['fas','calendar']}/>
                 </Wrapper>
                 
@@ -356,7 +413,7 @@ const content = {
                 cardContent={content.fourteen.body}
                 cardHeading={content.fourteen.heading}
                 date={content.fourteen.date}
-                iconColor="#fff" iconBackground={coloredIcon}
+                iconColor="#fff" iconBackground={colortwo}
                 firstIcon={['fas','calendar']}/>
                 </Wrapper>
                 
@@ -367,7 +424,7 @@ const content = {
                 cardContent={content.fifteen.body}
                 cardHeading={content.fifteen.heading}
                 date={content.fifteen.date}
-                iconColor="#fff" iconBackground={coloredIcon}
+                iconColor="#fff" iconBackground={colortwo}
                 firstIcon={['fas','calendar']}/>
                 </Wrapper>
                 
@@ -378,7 +435,7 @@ const content = {
                 cardContent={content.sixteen.body}
                 cardHeading={content.sixteen.heading}
                 date={content.sixteen.date}
-                iconColor="#fff" iconBackground={coloredIcon}
+                iconColor="#fff" iconBackground={colortwo}
                 firstIcon={['fas','calendar']}/>
                 </Wrapper>
                 
@@ -389,7 +446,7 @@ const content = {
                 cardContent={content.seventeen.body}
                 cardHeading={content.seventeen.heading}
                 date={content.seventeen.date}
-                iconColor="#fff" iconBackground={coloredIcon}
+                iconColor="#fff" iconBackground={colortwo}
                 firstIcon={['fas','calendar']}/>
                 </Wrapper>
                 
@@ -400,7 +457,7 @@ const content = {
                 cardContent={content.eighteen.body}
                 cardHeading={content.eighteen.heading}
                 date={content.eighteen.date}
-                iconColor="#fff" iconBackground={coloredIcon}
+                iconColor="#fff" iconBackground={colortwo}
                 firstIcon={['fas','calendar']}/>
                 </Wrapper>
                 

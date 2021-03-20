@@ -17,7 +17,7 @@ export default function LeftCard(props) {
         <Diamond></Diamond>
         <Icon>
             
-        <StyledIcon style={{color:props.iconColor, backgroundColor:props.iconBackground}} 
+        <StyledIcon style={{color:props.iconBackground, backgroundColor:props.iconColor}} 
        
   icon={props.firstIcon}
   mask={['fas', 'circle']}
